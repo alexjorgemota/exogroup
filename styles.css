@@ -11,67 +11,91 @@ body {
     height: 100vh;
     background-image: 
 		linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-		url('images/background.png'); /* Substitua pelo caminho da sua imagem */
-	background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
+		url('images/background.png');
+	background-position: center;
+    background-repeat: no-repeat;
     font-family: Arial, sans-serif;
     color: #fff;
 }
-
-header {
-    background-color: white;            /* Fundo branco */
-    padding: 20px;                      /* Espaçamento interno */
-    border-radius: 10px;                /* Bordas arredondadas */
-    text-align: center;                 /* Centralizar o conteúdo */
-    max-width: 600px;                   /* Largura máxima */
-    margin: 20px 10px;                  /* Centralizar na tela com espaçamento */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
-}
-
-img.logo {
-    max-width: 200px;                   /* Ajustar o tamanho do logo */
-    margin-bottom: 10px;                /* Espaço entre o logo e o texto */
-}
-
-header h2 {
-    font-size: 1.2em;
-    color: #333;                        /* Cor do texto */
-    margin: 10px 0;                     /* Espaço acima e abaixo do título */
-}
-
-header .progress {
-    display: flex;
-    justify-content: center;            /* Centralizar os pontos de progresso */
-    gap: 10px;                          /* Espaço entre os pontos */
-    margin-top: 10px;
-}
-
-header .dot {
-    width: 12px;                        /* Largura do ponto */
-    height: 12px;                       /* Altura do ponto */
-    background-color: #ccc;             /* Cor padrão do ponto */
-    border-radius: 50%;                 /* Deixar os pontos redondos */
-}
-
-header .dot.active {
-    background-color: #4caf50;          /* Cor do ponto ativo */
-}
-
 
 .quiz-container {
     text-align: center;
     max-width: 1000px;
 }
 
+/* -------------------------------------  HEADER  ------------------------------------------- */
+
+header {
+    background-color: white;            
+    padding: 20px;                      
+    border-radius: 10px;                
+    text-align: center;                 
+    max-width: 600px;                   
+    margin: 20px 10px;                  
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+img.logo {
+    max-width: 200px;                   
+    margin-bottom: 10px;                
+}
+
+header h2 {
+    font-size: 1.2em;
+    color: #333;                        
+    margin: 10px 0;                     
+}
+
+header .progress {
+    display: flex;
+    justify-content: center;            
+    gap: 10px;                          
+    margin-top: 10px;
+}
+
+header .dot {
+    width: 12px;                        
+    height: 12px;                       
+    background-color: #ccc;             
+    border-radius: 50%;                 
+}
+
+header .dot.active {
+    background-color: #4caf50;          
+}
+
+.progress {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #444;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: #0f0;
+}
+
+/* -------------------------------------  QUESTION  ------------------------------------------- */
+
 .question h3 {
     font-size: 1.5em;
     margin-bottom: 20px;
 }
 
+/* -------------------------------------  MOVIES  ------------------------------------------- */
+
+
 .movies {
     display: flex;
-    justify-content: center;       /* Centraliza o conteúdo horizontalmente */
-    align-items: center;           /* Centraliza o conteúdo verticalmente, se necessário */
+    justify-content: center;       
+    align-items: center;           
     margin: 20px auto;
 }
 
@@ -92,23 +116,8 @@ header .dot.active {
     transform: scale(1.1);
 }
 
-.progress {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
 
-.dot {
-    width: 12px;
-    height: 12px;
-    background: #444;
-    border-radius: 50%;
-}
-
-.dot.active {
-    background: #0f0;
-}
+/* -------------------------------------  SUMMARY  ------------------------------------------- */
 
 
 .summary {
@@ -141,8 +150,8 @@ header .dot.active {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%; /* Faz o botão ocupar toda a largura da div */
-    box-sizing: border-box; /* Garante que o padding não expanda o botão além da div */
+    width: 100%; 
+    box-sizing: border-box; 
 	box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -150,17 +159,20 @@ header .dot.active {
     background-color: #9c3319;
 }
 
+
+
+/* -------------------------------------  MEDIA (min-width: 800px)  ------------------------------------------- */
+
+
 @media (min-width: 800px) {
 	
-	/* Carrossel para dispositivos móveis */
 	.carousel {
-		width: 100%; /* Ajuste conforme necessário */
+		width: 100%; 
 		display: flex;
-		justify-content: center;       /* Centraliza o conteúdo horizontalmente */
-		align-items: center;           /* Centraliza o conteúdo verticalmente, se necessário */
+		justify-content: center;
+		align-items: center;
 	}
 	
-    /* Remova o carrossel em telas maiores, exibindo as imagens lado a lado */
     .carousel-control {
         display: none;
     }
@@ -178,14 +190,15 @@ header .dot.active {
 }
 
 
+/* -------------------------------------  MEDIA (max-width: 799px)  ------------------------------------------- */
+
+
 @media (max-width: 799px) {
 	
-	
-	/* Carrossel para dispositivos móveis */
 	.carousel {
 		position: relative;
 		overflow: hidden;
-		max-width: 300px; /* Ajuste conforme necessário */
+		max-width: 300px;
 	}
 
 	.carousel-track {
@@ -194,7 +207,7 @@ header .dot.active {
 	}
 
 	.movie-btn {
-		min-width: 100%; /* Exibe uma imagem por vez no carrossel */
+		min-width: 100%; 
 	}
 	
 	.movie-btn {
@@ -202,7 +215,7 @@ header .dot.active {
 		border: none;
 		cursor: pointer;
 		transition: transform 0.2s;
-		z-index: 1; /* Garante que o botão da imagem fique atrás dos controles */
+		z-index: 1; 
 	}
 
 	.carousel-control {
@@ -213,7 +226,7 @@ header .dot.active {
 		color: white;
 		border: none;
 		cursor: pointer;
-		z-index: 2; /* Garante que os botões de navegação fiquem acima */
+		z-index: 2; 
 		padding: 10px;
 	}
 
@@ -224,6 +237,5 @@ header .dot.active {
 	.carousel-control.next {
 		right: 10px;
 	}
-
 	
 }
