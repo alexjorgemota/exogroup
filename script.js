@@ -2,10 +2,23 @@ let currentQuestion = 1;
 let selectedMovieQ1 = null;
 let selectedMovieQ2 = null;
 let selectedMovieQ3 = null;
-let finalLink = ''; // Armazena o link final do filme
+let finalLink = '';
 
 const questionNumber = document.getElementById('question-number');
 const progressDots = document.querySelectorAll('.dot');
+
+
+/**
+ * Selects a movie based on the current question, updates the selected movie,
+ * loads movies for the next question, and shows the summary for the last question.
+ *
+ * Selecciona una película según la pregunta actual, actualiza la película seleccionada,
+ * carga películas para la siguiente pregunta y muestra el resumen para la última pregunta.
+ *
+ * Seleciona um filme com base na pergunta atual, atualiza o filme selecionado,
+ * carrega filmes para a próxima pergunta e mostra o resumo para a última pergunta.
+ */
+ 
 
 function selectMovie(question, movieTitle, movieLink) {
     if (question === 1) {
@@ -18,29 +31,24 @@ function selectMovie(question, movieTitle, movieLink) {
         showNextQuestion(3);
     } else {
         selectedMovieQ3 = movieTitle;
-        finalLink = movieLink; // Armazena o link do filme final selecionado
+        finalLink = movieLink;
         showSummary();
     }
 }
 
-function showSummary() {
-    document.getElementById(`question-${currentQuestion}`).style.display = 'none';
-    document.getElementById(`number-question`).style.display = 'none';
 
-    const quizContainer = document.querySelector('.quiz-container');
-    const summaryDiv = document.createElement('div');
-    summaryDiv.classList.add('summary');
-    
-    // Define o conteúdo do resumo com o botão de redirecionamento
-    summaryDiv.innerHTML = `
-        <h3>WATCH NEW MOVIES FOR FREE!</h3>
-        <p>Watch any movies online for free without ads!</p>
-        <p>Have fun watching your favourite movies!</p>
-        <button onclick="window.location.href='${finalLink}'">WATCH HERE!</button>
-    `;
 
-    quizContainer.appendChild(summaryDiv);
-}
+/**
+ * Displays the next question, hides the current question, updates the current question number,
+ * and updates the progress dots.
+ *
+ * Muestra la siguiente pregunta, oculta la pregunta actual, actualiza el número de la pregunta actual
+ * y actualiza los puntos de progreso.
+ *
+ * Exibe a próxima pergunta, oculta a pergunta atual, atualiza o número da pergunta atual
+ * e atualiza os pontos de progresso.
+ */
+
 
 function showNextQuestion(nextQuestion) {
     document.getElementById(`question-${currentQuestion}`).style.display = 'none';
@@ -54,11 +62,23 @@ function showNextQuestion(nextQuestion) {
     });
 }
 
+
+
+/**
+ * Loads movies based on the previous selection for the specified question,
+ * and creates a carousel structure for the movie options.
+ *
+ * Carga películas según la selección anterior para la pregunta especificada,
+ * y crea una estructura de carrusel para las opciones de películas.
+ *
+ * Carrega filmes com base na seleção anterior para a pergunta especificada,
+ * e cria uma estrutura de carrossel para as opções de filmes.
+ */
+
 function loadMoviesForQuestion(question, previousMovie) {
     const moviesContainer = document.getElementById(`movies-q${question}`);
-    moviesContainer.innerHTML = ''; // Limpa as opções anteriores
+    moviesContainer.innerHTML = '';
 
-    // Definindo as opções com base na escolha anterior
     let movies = [];
     if (question === 2) {
         if (previousMovie === 'Movie 1') {
@@ -138,22 +158,22 @@ function loadMoviesForQuestion(question, previousMovie) {
         }
     }
 
-    // Cria a estrutura do carrossel
+    
     const carouselDiv = document.createElement('div');
     carouselDiv.classList.add('carousel');
 
-    // Botão de controle anterior
+    
     const prevButton = document.createElement('button');
     prevButton.classList.add('carousel-control', 'prev');
     prevButton.innerHTML = '❮';
     prevButton.onclick = () => slideCarousel(question, -1);
     carouselDiv.appendChild(prevButton);
 
-    // Div de faixa do carrossel para conter os botões de filmes
+    
     const carouselTrack = document.createElement('div');
     carouselTrack.classList.add('carousel-track');
 
-    // Adiciona cada filme como botão dentro da faixa do carrossel
+    
     movies.forEach(movie => {
         const movieBtn = document.createElement('button');
         movieBtn.classList.add('movie-btn');
@@ -164,19 +184,25 @@ function loadMoviesForQuestion(question, previousMovie) {
 
     carouselDiv.appendChild(carouselTrack);
 
-    // Botão de controle próximo
+    
     const nextButton = document.createElement('button');
     nextButton.classList.add('carousel-control', 'next');
     nextButton.innerHTML = '❯';
     nextButton.onclick = () => slideCarousel(question, 1);
     carouselDiv.appendChild(nextButton);
 
-    // Anexa o carrossel completo ao contêiner de filmes da questão
+
     moviesContainer.appendChild(carouselDiv);
 }
 
 let currentSlide = 0;
 
+
+/**
+ * Slides the carousel left or right based on the direction provided.
+ * Desliza o carrossel para a esquerda ou para a direita com base na direção fornecida.
+ * Desliza o carrossel para a esquerda ou para a direita com base na direção fornecida.
+ */
 
 function slideCarousel(question, direction) {
     const carouselTrack = document.querySelector(`#question-${question} .carousel-track`);
@@ -215,4 +241,32 @@ function slideCarousel(question, direction) {
 
     // Oculta ou exibe o botão "avançar"
     nextButton.style.display = newIndex === totalMovies - 1 ? 'none' : 'inline-block';
+}
+
+
+/**
+ * Displays a final message and provides a link to the last movie chosen.
+ *
+ * Muestra un mensaje final y proporciona un enlace a la última película elegida.
+ *
+ * Exibe uma mensagem final e fornece um link para o último filme escolhido.
+ */
+
+function showSummary() {
+    document.getElementById(`question-${currentQuestion}`).style.display = 'none';
+    document.getElementById(`number-question`).style.display = 'none';
+
+    const quizContainer = document.querySelector('.quiz-container');
+    const summaryDiv = document.createElement('div');
+    summaryDiv.classList.add('summary');
+    
+    // Define o conteúdo do resumo com o botão de redirecionamento
+    summaryDiv.innerHTML = `
+        <h3>WATCH NEW MOVIES FOR FREE!</h3>
+        <p>Watch any movies online for free without ads!</p>
+        <p>Have fun watching your favourite movies!</p>
+        <button onclick="window.location.href='${finalLink}'">WATCH HERE!</button>
+    `;
+
+    quizContainer.appendChild(summaryDiv);
 }
