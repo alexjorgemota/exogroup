@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: 
+		linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+		url('images/background.png'); /* Substitua pelo caminho da sua imagem */
+	background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+header {
+    background-color: white;            /* Fundo branco */
+    padding: 20px;                      /* Espaçamento interno */
+    border-radius: 10px;                /* Bordas arredondadas */
+    text-align: center;                 /* Centralizar o conteúdo */
+    max-width: 600px;                   /* Largura máxima */
+    margin: 20px 10px;                  /* Centralizar na tela com espaçamento */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
+}
+
+img.logo {
+    max-width: 200px;                   /* Ajustar o tamanho do logo */
+    margin-bottom: 10px;                /* Espaço entre o logo e o texto */
+}
+
+header h2 {
+    font-size: 1.2em;
+    color: #333;                        /* Cor do texto */
+    margin: 10px 0;                     /* Espaço acima e abaixo do título */
+}
+
+header .progress {
+    display: flex;
+    justify-content: center;            /* Centralizar os pontos de progresso */
+    gap: 10px;                          /* Espaço entre os pontos */
+    margin-top: 10px;
+}
+
+header .dot {
+    width: 12px;                        /* Largura do ponto */
+    height: 12px;                       /* Altura do ponto */
+    background-color: #ccc;             /* Cor padrão do ponto */
+    border-radius: 50%;                 /* Deixar os pontos redondos */
+}
+
+header .dot.active {
+    background-color: #4caf50;          /* Cor do ponto ativo */
+}
+
+
+.quiz-container {
+    text-align: center;
+    max-width: 1000px;
+}
+
+.question h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.movies {
+    display: flex;
+    justify-content: center;       /* Centraliza o conteúdo horizontalmente */
+    align-items: center;           /* Centraliza o conteúdo verticalmente, se necessário */
+    margin: 20px auto;
+}
+
+.movie-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.movie-btn img {
+    width: 200px;
+    border-radius: 8px;
+	max-height: 274px;
+}
+
+.movie-btn:hover {
+    transform: scale(1.1);
+}
+
+.progress {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #444;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: #0f0;
+}
+
+
+.summary {
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	border: 6px solid #61d6b6;
+	padding: 30px;
+	margin: 10px;
+}
+
+.summary h3 {
+    margin-bottom: 20px;
+	color: #61d6b6;
+}
+
+.summary p {
+    margin-bottom: 15px;
+	color: #000000;
+}
+
+.summary button {
+    background-color: #ec5632;
+    color: white;
+    border: none;
+    padding: 20px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Faz o botão ocupar toda a largura da div */
+    box-sizing: border-box; /* Garante que o padding não expanda o botão além da div */
+	box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.summary button:hover {
+    background-color: #9c3319;
+}
+
+@media (min-width: 800px) {
+	
+	/* Carrossel para dispositivos móveis */
+	.carousel {
+		width: 100%; /* Ajuste conforme necessário */
+		display: flex;
+		justify-content: center;       /* Centraliza o conteúdo horizontalmente */
+		align-items: center;           /* Centraliza o conteúdo verticalmente, se necessário */
+	}
+	
+    /* Remova o carrossel em telas maiores, exibindo as imagens lado a lado */
+    .carousel-control {
+        display: none;
+    }
+    
+    .carousel-track {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .movie-btn {
+        min-width: auto;
+        width: 200px;
+        margin: 0 10px;
+    }
+}
+
+
+@media (max-width: 799px) {
+	
+	
+	/* Carrossel para dispositivos móveis */
+	.carousel {
+		position: relative;
+		overflow: hidden;
+		max-width: 300px; /* Ajuste conforme necessário */
+	}
+
+	.carousel-track {
+		display: flex;
+		transition: transform 0.5s ease;
+	}
+
+	.movie-btn {
+		min-width: 100%; /* Exibe uma imagem por vez no carrossel */
+	}
+	
+	.movie-btn {
+		background: none;
+		border: none;
+		cursor: pointer;
+		transition: transform 0.2s;
+		z-index: 1; /* Garante que o botão da imagem fique atrás dos controles */
+	}
+
+	.carousel-control {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: rgba(0, 0, 0, 0.5);
+		color: white;
+		border: none;
+		cursor: pointer;
+		z-index: 2; /* Garante que os botões de navegação fiquem acima */
+		padding: 10px;
+	}
+
+	.carousel-control.prev {
+		left: 10px;
+	}
+
+	.carousel-control.next {
+		right: 10px;
+	}
+
+	
+}

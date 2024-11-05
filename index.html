@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha de Filmes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <img src="images/logo.png" alt="Your Logo" class="logo">
+		<header id="number-question">
+            <h2>QUESTION <span id="question-number">1</span> OF 3:</h2>
+            <div class="progress">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </header>
+        
+        <div class="question" id="question-1">
+            <h3>Choose one of the three movies</h3>
+            <div class="movies">
+				<div class="carousel">
+					<button class="carousel-control prev" onclick="slideCarousel(1, -1)">❮</button>
+					<div class="carousel-track">
+						<button onclick="selectMovie(1, 'Movie 1')" class="movie-btn">
+							<img src="images/movies/movie1.png" alt="Movie 1">
+						</button>
+						<button onclick="selectMovie(1, 'Movie 2')" class="movie-btn">
+							<img src="images/movies/movie2.png" alt="Movie 2">
+						</button>
+						<button onclick="selectMovie(1, 'Movie 3')" class="movie-btn">
+							<img src="images/movies/movie3.png" alt="Movie 3">
+						</button>
+					</div>
+					<button class="carousel-control next" onclick="slideCarousel(1, 1)">❯</button>
+				</div>
+			</div>
+        </div>
+        
+        <!-- Question placeholders -->
+        <div class="question" id="question-2" style="display: none;">
+            <h3>Which one do you like the most?</h3>
+            <div class="movies" id="movies-q2"></div>
+        </div>
+        
+        <div class="question" id="question-3" style="display: none;">
+            <h3>Which one do you want to watch now?</h3>
+            <div class="movies" id="movies-q3"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
